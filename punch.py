@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime
 import dateutil.parser
 import json
 import os.path
@@ -22,7 +22,7 @@ def main(config):
             print('Previous punch-in exists. Remove the file first: ' + FILENAME)
             sys.exit(1)
 
-        t = datetime.now(timezone.utc)
+        t = datetime.utcnow()
         file = open(FILENAME, 'w+')
         file.write(t.isoformat())
         file.close()
@@ -36,7 +36,7 @@ def main(config):
 
         file = open(FILENAME, 'r')
         t_start = dateutil.parser.parse(file.readline())
-        t_end = datetime.now(timezone.utc)
+        t_end = datetime.utcnow()
 
         data = {
             'task_id': config['task_id'],
