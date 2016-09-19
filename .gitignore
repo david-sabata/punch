@@ -87,3 +87,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+punch.in
+.idea
+.config/config.local.json
